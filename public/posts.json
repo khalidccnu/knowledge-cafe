@@ -10,14 +10,10 @@
         "publishDate": "2020-11-26T18:00:00.000Z",
         "ratings": 4,
         "ratingsCount": 16,
-        "img": [
-            {
-                "author" : "https://gravatar.com/avatar/e4950704494f6765e9f9702c1d414979"
-            },
-            {
-                "post" : "https://websitelearners.com/content/uploads/2020/11/Create-E-Commerce-Website-Using-WordPress.jpg"
-            }
-        ],
+        "img": {
+            "author" : "https://gravatar.com/avatar/e4950704494f6765e9f9702c1d414979",
+            "post" : "https://websitelearners.com/content/uploads/2020/11/Create-E-Commerce-Website-Using-WordPress.jpg"
+        },
         "readTime": 35
     },
     {
@@ -33,14 +29,10 @@
         "publishDate": "2021-09-16T18:00:00.000Z",
         "ratings": 3.9,
         "ratingsCount": 10,
-        "img": [
-            {
-                "author" : "https://gravatar.com/avatar/bbe8f421be778e120aba105477a4f22c"
-            },
-            {
-                "post" : "https://websitelearners.com/content/uploads/2021/09/SMS-Gateway-Blog.jpg"
-            }
-        ],
+        "img": {
+            "author": "https://gravatar.com/avatar/bbe8f421be778e120aba105477a4f22c",
+            "post": "https://websitelearners.com/content/uploads/2021/09/SMS-Gateway-Blog.jpg"
+        },
         "readTime": 22
     },
     {
@@ -54,14 +46,10 @@
         "publishDate": "2021-09-22T18:00:00.000Z",
         "ratings": 5,
         "ratingsCount": 5,
-        "img": [
-            {
-                "author" : "https://gravatar.com/avatar/e42b99b8ea7b4f491a97f09008c1bfed"
-            },
-            {
-                "post" : "https://websitelearners.com/content/uploads/2021/09/WP-Certificate-course-blog.jpg"
-            }
-        ],
+        "img": {
+            "author" : "https://gravatar.com/avatar/e42b99b8ea7b4f491a97f09008c1bfed",
+            "post" : "https://websitelearners.com/content/uploads/2021/09/WP-Certificate-course-blog.jpg"
+        },
         "readTime": 10
     },
     {
@@ -74,14 +62,10 @@
         "publishDate": "2021-10-17T18:00:00.000Z",
         "ratings": 4.9,
         "ratingsCount": 22,
-        "img": [
-            {
-                "author" : "https://gravatar.com/avatar/15fa89a4a6379a582564559263e4234b"
-            },
-            {
-                "post" : "https://websitelearners.com/content/uploads/2021/10/Website-development-cost-in-India-Blog-03.jpg"
-            }
-        ],
+        "img": {
+            "author" : "https://gravatar.com/avatar/15fa89a4a6379a582564559263e4234b",
+            "post" : "https://websitelearners.com/content/uploads/2021/10/Website-development-cost-in-India-Blog-03.jpg"
+        },
         "readTime": 10
     },
     {
@@ -95,14 +79,10 @@
         "publishDate": "2022-04-07T18:00:00.000Z",
         "ratings": 0,
         "ratingsCount": 0,
-        "img": [
-            {
-                "author" : "https://gravatar.com/avatar/05995506fdb9ef28bd74d0d8dcbfd85c"
-            },
-            {
-                "post" : "https://websitelearners.com/content/uploads/2022/04/Ecommerce-Website-development-costs-WL-blog.jpg"
-            }
-        ],
+        "img": {
+            "author" : "https://gravatar.com/avatar/05995506fdb9ef28bd74d0d8dcbfd85c",
+            "post" : "https://websitelearners.com/content/uploads/2022/04/Ecommerce-Website-development-costs-WL-blog.jpg"
+        },
         "readTime": 7
     }
 ]
