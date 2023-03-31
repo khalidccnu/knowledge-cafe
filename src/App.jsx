@@ -1,6 +1,7 @@
 import Header from "./component/Header.jsx";
 import Blog from "./component/Blog.jsx";
 import Qa from "./component/QA.jsx";
+import Footer from "./component/Footer.jsx";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
     <Header />
     <Blog />
     <Qa />
+    <Footer />
     </>
   )
 }
