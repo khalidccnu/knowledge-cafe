@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'boxicons';
+import {toast} from "react-toastify";
+import {addBookmark, getBookmark} from "../utility/index.js";
 
-const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {author, post}, readTime}}) => {
+const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {author, post}, readTime}, isBookmark, setIsBookmark}) => {
     const publishMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Oct", "Nov", "Dec"];
     const getPublishDate = new Date(publishDate);
     const diffDate = new Date() - getPublishDate;
@@ -15,6 +17,24 @@ const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {a
         day = diffDateToDay;
         day > 1 ? day += " Days ago" : day += " Day ago";
     }
+
+    const [bookmark, setBookmark] = useState(false);
+
+    const handleBookmark = _ => {
+        if (addBookmark(id)) {
+            toast(title.slice(0, 22) + "... is already bookmarked.");
+        } else {
+            toast(title.slice(0, 22) + "... is bookmarked.");
+            setBookmark(true);
+            setIsBookmark(!isBookmark);
+        }
+    }
+
+    useEffect(_ => {
+        const bookmark = getBookmark();
+
+        bookmark.find(post => post === id) ? setBookmark(true) : bookmark ? setBookmark(false) : null;
+    }, [isBookmark]);
 
     return (
         <div className="card bg-base-100">
@@ -32,9 +52,17 @@ const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {a
                             }</small>
                         </div>
                     </div>
-                    <small className="place-self-start inline-flex items-center text-gray-500">
+                    <small className="inline-flex text-gray-500">
                         <span>{readTime} min read</span>
-                        <box-icon name='bookmark' color='rgb(107 114 128)'></box-icon>
+                        <div className="cursor-pointer" onClick={handleBookmark}>
+                            {
+                                bookmark ? (
+                                    <box-icon type='solid' name='bookmark' color='rgb(107 114 128)'></box-icon>
+                                ) : (
+                                    <box-icon type='regular' name='bookmark' color='rgb(107 114 128)'></box-icon>
+                                )
+                            }
+                        </div>
                     </small>
                 </div>
                 <h2 className="card-title mt-2">{title}</h2>
