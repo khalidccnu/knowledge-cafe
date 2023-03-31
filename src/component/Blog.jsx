@@ -40,12 +40,17 @@ const Blog = () => {
                 <PulseLoader color="#36d7b7" />
             </div>
         ) : (
-            <section className="bg-gray-200 py-10">
+            <section className="relative bg-gray-200 pt-10 pb-16">
                 <div className="container">
                     <div className="relative grid grid-cols-1 lg:grid-cols-[2fr_1fr] lg:max-w-3xl lg:mx-auto gap-5">
                         <Posts posts={posts} isBookmark={isBookmark} setIsBookmark={setIsBookmark} isRead={isRead} setIsRead={setIsRead} clearRead={clearRead} />
                         <Sidebar sidebar={sidebar} isBookmark={isBookmark} setIsBookmark={setIsBookmark} isRead={isRead} clearRead={clearRead} setClearRead={setClearRead} />
                     </div>
+                </div>
+                <div className="absolute inset-x-0 -bottom-px">
+                    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                        <polygon className="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
+                    </svg>
                 </div>
                 <ToastContainer />
             </section>
