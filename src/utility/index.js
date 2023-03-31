@@ -25,3 +25,28 @@ export const getBookmark = _ => {
 
     return bookmark;
 }
+
+export const addRead = (id, readTime) => {
+    const read = getRead();
+
+    read[id] = readTime;
+    localStorage.setItem("read", JSON.stringify(read));
+}
+
+export const removeRead = id => {
+    const read = getRead();
+
+    delete read[id];
+    localStorage.setItem("read", JSON.stringify(read));
+}
+
+export const getRead = _ => {
+    let read = {};
+    const getRead = localStorage.getItem("read");
+
+    if (getRead) read = JSON.parse(getRead);
+
+    return read;
+}
+
+export const deleteRead = _ => localStorage.removeItem("read");

@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Post from "./Post.jsx";
 
-const Posts = ({posts, isBookmark, setIsBookmark}) => {
+const Posts = ({posts, isBookmark, setIsBookmark, isRead, setIsRead, clearRead}) => {
     const [showAll, setShowAll] = useState(false);
 
     return (
         <div>
             <div className="grid grid-cols-1 gap-5">
                 {
-                    posts.slice(0, showAll ? posts.length : 3).map(post => <Post key={post.id} post={post} isBookmark={isBookmark} setIsBookmark={setIsBookmark} />)
+                    posts.slice(0, showAll ? posts.length : 3).map(post => <Post key={post.id} post={post} isBookmark={isBookmark} setIsBookmark={setIsBookmark} isRead={isRead} setIsRead={setIsRead} clearRead={clearRead} />)
                 }
             </div>
             {

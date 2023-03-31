@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import 'boxicons';
 import {toast} from "react-toastify";
-import {addBookmark, getBookmark} from "../utility/index.js";
+import {addBookmark, addRead, getBookmark, getRead, removeRead} from "../utility/index.js";
 
-const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {author, post}, readTime}, isBookmark, setIsBookmark}) => {
+const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {author, post}, readTime}, isBookmark, setIsBookmark, isRead, setIsRead, clearRead}) => {
     const publishMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Oct", "Nov", "Dec"];
     const getPublishDate = new Date(publishDate);
     const diffDate = new Date() - getPublishDate;
@@ -19,6 +19,7 @@ const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {a
     }
 
     const [bookmark, setBookmark] = useState(false);
+    const [read, setRead] = useState(false);
 
     const handleBookmark = _ => {
         if (addBookmark(id)) {
@@ -30,11 +31,31 @@ const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {a
         }
     }
 
+    const handleRead = _ => {
+        addRead(id, readTime);
+        toast(title.slice(0, 22) + "... is mark as read.");
+        setRead(true);
+        setIsRead(!isRead);
+    }
+
+    const handleUnread = _ => {
+        removeRead(id);
+        toast(title.slice(0, 22) + "... is mark as unread.");
+        setRead(false);
+        setIsRead(!isRead);
+    }
+
     useEffect(_ => {
         const bookmark = getBookmark();
 
         bookmark.find(post => post === id) ? setBookmark(true) : bookmark ? setBookmark(false) : null;
     }, [isBookmark]);
+
+    useEffect(_ => {
+        const read = getRead();
+
+        id in read ? setRead(true) : read ? setRead(false) : null;
+    }, [clearRead]);
 
     return (
         <div className="card bg-base-100">
@@ -86,7 +107,13 @@ const Post = ({post: {id, title, authorName, tags, publishDate, ratings, img: {a
                         tags.map((tag, idx) => <small className="text-gray-500" key={idx}>#{tag}</small>)
                     }
                 </div>
-                <button type="button" className="btn btn-sm btn-secondary text-white">Mark as read</button>
+                {
+                    read ? (
+                        <button type="button" className="btn btn-sm btn-secondary text-white" onClick={handleUnread}>Mark as unread</button>
+                    ) : (
+                        <button type="button" className="btn btn-sm btn-primary text-white" onClick={handleRead}>Mark as read</button>
+                    )
+                }
             </div>
         </div>
     );

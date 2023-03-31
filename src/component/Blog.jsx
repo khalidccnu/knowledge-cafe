@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {PulseLoader} from "react-spinners";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {getBookmark} from "../utility/index.js";
 import Posts from "./Posts.jsx";
 import Sidebar from "./Sidebar.jsx";
-import {getBookmark} from "../utility/index.js";
 
 const Blog = () => {
     const [loading, isLoading] = useState(true);
     const [posts, setPosts] = useState([]);
     const [isBookmark, setIsBookmark] = useState(false);
+    const [isRead, setIsRead] = useState(false);
+    const [clearRead, setClearRead] = useState(false);
     const [sidebar, setSidebar] = useState([]);
 
     useEffect(_ => {
@@ -41,8 +43,8 @@ const Blog = () => {
             <section className="bg-gray-200 py-10">
                 <div className="container">
                     <div className="relative grid grid-cols-1 lg:grid-cols-[2fr_1fr] lg:max-w-3xl lg:mx-auto gap-5">
-                        <Posts posts={posts} isBookmark={isBookmark} setIsBookmark={setIsBookmark} />
-                        <Sidebar sidebar={sidebar} isBookmark={isBookmark} setIsBookmark={setIsBookmark} />
+                        <Posts posts={posts} isBookmark={isBookmark} setIsBookmark={setIsBookmark} isRead={isRead} setIsRead={setIsRead} clearRead={clearRead} />
+                        <Sidebar sidebar={sidebar} isBookmark={isBookmark} setIsBookmark={setIsBookmark} isRead={isRead} clearRead={clearRead} setClearRead={setClearRead} />
                     </div>
                 </div>
                 <ToastContainer />
